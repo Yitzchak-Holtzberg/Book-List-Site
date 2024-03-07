@@ -7,11 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div id="book-list">Hello Reader</div>
-<button id="book-list-button">Show Books</button>
 
-<button id="add-book-toggle-button">Add Book</button>
-<form id="add-book-form">
+<div id="library-container">
+  <button id="add-book-toggle-button">Add a Book</button>
+  <div id="book-list">Book List</div>
+</div>
+
+<form id="add-book-form" class="hide">
   <h2>Add a Book</h2>
   <div>
     <label for="author">Author:</label>
@@ -35,4 +37,3 @@
 <script src="js/app.js"></script>
 </body>
 </html>
-
