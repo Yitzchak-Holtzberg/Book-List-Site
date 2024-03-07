@@ -83,6 +83,10 @@ document.getElementById('add-book-form').addEventListener('submit', (e) => {
   }
 
   addBookToLibrary(author, title, year, pages);
+  document.getElementById("add-book-form").style.display = "none";
+  document.getElementById("page-overlay").style.display = "none";
+  document.body.classList.remove('no-scroll'); // Re-enable scrolling
+
   displayBooks();
 
   document.getElementById('author').value = '';
@@ -93,15 +97,25 @@ document.getElementById('add-book-form').addEventListener('submit', (e) => {
 
 document.getElementById("add-book-toggle-button").addEventListener("click", function () {
   let content = document.getElementById("add-book-form")
+  let overlay = document.getElementById("page-overlay")
   if (content.style.display === "none") {
+    document.body.classList.add('no-scroll');
+
+    overlay.style.display = "block"
     content.style.display = "grid"; // Make the div visible
     content.style.gridAutoRows = "fit-content(100px)";
     content.style.gridAutoColumns = "fit-content(100px)";
     content.style.alignItems = "center";
   } else {
+    document.body.classList.remove('no-scroll');
     content.style.display = "none";
   }
 })
+document.getElementById('close-form-button').addEventListener('click', function () {
+  document.getElementById("add-book-form").style.display = "none";
+  document.getElementById("page-overlay").style.display = "none";
+  document.body.classList.remove('no-scroll'); // Re-enable scrolling
 
+});
 // Initially display books
 displayBooks();

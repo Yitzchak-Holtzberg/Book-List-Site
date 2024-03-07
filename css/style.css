@@ -5,6 +5,7 @@ body {
   min-width: 100vw;
 
 }
+
 #list-for-each-button {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -20,6 +21,55 @@ body {
 
 #add-book-form {
   display: none;
+  z-index: 99;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10%;
+  background-color: rgb(15, 60, 105);
+  width: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: center;
+  /* Optional: max-width: XXpx; */
+  border-radius: 15px;
+}
+
+#page-overlay {
+  display: none; /* Hidden by default */
+  position: fixed; /* Use fixed to cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 98; /* Below the form but above everything else */
+}
+
+#close-form-button {
+  width: auto;
+  height: auto;
+  position: absolute; /* Position relative to the form's container */
+  top: 2%; /* Align to the top edge of the form */
+  right: 2%; /* Align to the right edge of the form */
+  padding: 10px 15px; /* Padding to make it easier to tap or click */
+  background-color: #176b68; /* Typically, close buttons are red, but choose a color that fits your design */
+  color: #FFFFFF; /* White text color for the 'X' */
+  border: none; /* No border for a cleaner look */
+  font-size: 16px; /* Large enough to be easily readable */
+  cursor: pointer; /* Change cursor to pointer to indicate clickable */
+  border-radius: 8px; /* Optional: rounded corner on the bottom-left to soften the design */
+  box-shadow: none;
+}
+
+#close-form-button:hover {
+  background-color: #D60000; /* Slightly darker shade on hover for feedback */
+}
+
+
+/* CSS to disable scrolling */
+.no-scroll {
+  overflow: hidden;
 }
 
 
@@ -51,6 +101,26 @@ button {
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 100px;
+}
+
+#button {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0 0, 2px 2px 0 0, 3px 3px 0 0, 4px 4px 0 0, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 120px;
+  top: 10%;
+  left: 10%;
 }
 
 .button:active {
@@ -94,6 +164,7 @@ input[type=text] {
     border-color: #044907;
   }
 }
+
 .book-container {
   display: flex;
   flex-direction: column;
@@ -102,7 +173,7 @@ input[type=text] {
   width: auto;
 }
 
-div:first-child{
+div:first-child {
   border: none;
 }
 
