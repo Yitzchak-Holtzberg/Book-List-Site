@@ -1,24 +1,21 @@
 body {
   background-color: #2D2D2D; /* Retains the modern, sleek look */
   display: grid; /* Enables flex layout */
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
   min-height: 100vh; /* Ensures the body takes up at least the full viewport height */
   min-width: 100vw;
 
 }
-#book-list {
+#list-for-each-button {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-area: auto;
+  gap: 5px;
+  width: 95%; /* Adjust width as necessary */
 
-  display: flex; /* Switches to flex for better control over alignment */
-  flex-direction: column; /* Stacks children vertically */
-  align-items: center; /* Centers children horizontally within the container */
-  width: 50%; /* Adjusts width to the content */
-  padding: 20px; /* Slightly increased padding for better spacing */
-  gap: 20px; /* Increased gap for clearer separation of elements */
-  background-color: #404040; /* Un-commented and retained for a modern neutral background */
-  border: 2px solid #555; /* Un-commented for a softer border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.19); /* Un-commented for depth */
-  border-radius: 8px; /* Un-commented for a modern, softer look */
+  background-color: #404040;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  margin: auto; /* Centers the grid in the page */
 }
 
 #add-book-form {
@@ -27,12 +24,9 @@ body {
 
 
 #book-list div {
-  border: 2px solid #768878; /* Softer color complementing the dark theme */
+  border: 2px solid #275d2c; /* Softer color complementing the dark theme */
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Consistent shadow effect */
-  display: flex;
-  flex-direction: column;
-
 }
 
 
@@ -56,6 +50,7 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  width: 100px;
 }
 
 .button:active {
@@ -98,6 +93,17 @@ input[type=text] {
   :focus {
     border-color: #044907;
   }
+}
+.book-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the book details and buttons */
+  gap: 10px; /* Adds space between book details and buttons */
+  width: auto;
+}
+
+div:first-child{
+  border: none;
 }
 
 

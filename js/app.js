@@ -17,11 +17,12 @@ function addBookToLibrary(author, title, year, pages, read = false) {
 }
 
 function displayBooks() {
-  const bookList = document.getElementById('book-list');
+  const bookList = document.getElementById('list-for-each-button');
   bookList.innerHTML = '';
 
   myLibrary.forEach((book, index) => {
-    const bookDetails = document.createElement('div');
+    const bookContainer = document.createElement('div')
+    const bookDetails = document.createElement('p');
     bookDetails.innerHTML = `<h3>${book.author}</h3><h2>${book.title}</h2>Year: ${book.year}, Pages: ${book.pages}`;
 
     const deleteButton = document.createElement('button');
@@ -35,9 +36,10 @@ function displayBooks() {
       displayBooks();
     };
 
-    bookList.appendChild(bookDetails);
-    bookList.appendChild(deleteButton);
-    bookList.appendChild(readButton);
+    bookContainer.appendChild(bookDetails)
+    bookContainer.appendChild(deleteButton)
+    bookContainer.appendChild(readButton)
+    bookList.appendChild(bookContainer)
   });
 }
 
