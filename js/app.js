@@ -100,7 +100,7 @@ document.getElementById("add-book-toggle-button").addEventListener("click", func
   let overlay = document.getElementById("page-overlay")
   if (content.style.display === "none") {
     document.body.classList.add('no-scroll');
-
+    window.scrollTo(0, 0);
     overlay.style.display = "block"
     content.style.display = "grid"; // Make the div visible
     content.style.gridAutoRows = "fit-content(100px)";
