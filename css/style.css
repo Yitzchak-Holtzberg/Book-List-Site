@@ -104,27 +104,22 @@ button {
 }
 
 #button {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #000;
-  cursor: pointer;
-  border: 3px solid;
-  padding: 0.25em 0.5em;
-  box-shadow: 1px 1px 0 0, 2px 2px 0 0, 3px 3px 0 0, 4px 4px 0 0, 5px 5px 0px 0px;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
   width: 120px;
   top: 10%;
   left: 10%;
 }
 
+#read-button{
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+#delete-button{
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
 .button:active {
-  box-shadow: 0px 0px 0px 0px;
+  box-shadow: 0 0 0 0;
   top: 5px;
   left: 5px;
 }
@@ -168,9 +163,12 @@ input[type=text] {
 .book-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers the book details and buttons */
-  gap: 10px; /* Adds space between book details and buttons */
+  justify-content: space-between; /* Spread content and push buttons to the bottom */
+  align-items: center;
+  gap: 10px;
   width: auto;
+  height: 100%; /* Ensure the container takes full height */
+  padding-bottom: 10px; /* Add padding to ensure buttons don't stick to the bottom edge */
 }
 
 div:first-child {
@@ -178,3 +176,41 @@ div:first-child {
 }
 
 
+@media only screen and (max-width: 768px) {
+  #list-for-each-button {
+    grid-template-columns: repeat(3, 1fr); /* Adjust column count for narrower screens */
+  }
+
+  button {
+    font-size: 14px; /* Smaller font size for buttons */
+    padding: 0.25em 0.4em; /* Adjust padding */
+    width: auto; /* Allow button width to adjust to content */
+  }
+  #read-button{
+    max-width: initial;
+  }
+
+  #book-list div {
+    padding: 5px; /* Reduce padding for smaller screens */
+  }
+
+  .book-container {
+    gap: 5px; /* Reduce gap for smaller screens */
+  }
+
+  #add-book-form, #page-overlay {
+    width: 90%; /* Make the form and overlay wider on small screens */
+    left: 5%; /* Adjust left position for centered alignment */
+    transform: translateX(0); /* Remove transform to avoid misalignment */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #list-for-each-button {
+    grid-template-columns: 1fr; /* Single column layout for very narrow screens */
+  }
+
+  .book-container {
+    width: 95%; /* Increase width to utilize more space */
+  }
+}

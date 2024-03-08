@@ -28,8 +28,10 @@ function displayBooks() {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.onclick = () => removeBook(index);
+    deleteButton.id = "delete-button"
 
     const readButton = document.createElement('button');
+    readButton.id="read-button"
     readButton.textContent = book.read ? 'Unread' : 'Read';
     readButton.onclick = () => {
       book.toggleReadStatus();
