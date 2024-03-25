@@ -1,5 +1,4 @@
-const myLibrary = [];
-
+import 'https://tomashubelbauer.github.io/github-pages-local-storage/index.js';
 
 
 class Book {
@@ -15,6 +14,10 @@ class Book {
     this.read = !this.read;
   };
 }
+
+// Use `localStorage` as you normally would now
+const myLibrary = loadLibrary();
+
 
 if (myLibrary.length === 0) {
   console.log('Library is empty. Adding example books to library.');
@@ -49,6 +52,7 @@ if (myLibrary.length === 0) {
 
 function addBookToLibrary(author, title, year, pages, read = false) {
   myLibrary.push(new Book(author, title, year, pages, read));
+  saveLibrary();
 }
 
 function displayBooks() {
@@ -89,6 +93,7 @@ function createButton(text, onClick) {
 function removeBook(index) {
   myLibrary.splice(index, 1);
   displayBooks();
+  saveLibrary();
 }
 
 
@@ -164,7 +169,7 @@ function loadLibrary() {
   if (library) {
     myLibrary.push(...library);
   } else {
-    return null;
+    return [];
   }
 }
 
