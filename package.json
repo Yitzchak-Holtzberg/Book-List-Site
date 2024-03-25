@@ -20,5 +20,9 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",
     "webpack-merge": "^5.9.0"
+  },
+  "dependencies": {
+    "node": "^21.7.1",
+    "sass": "^1.72.0"
   }
 }
