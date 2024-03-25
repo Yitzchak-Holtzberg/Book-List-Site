@@ -1,16 +1,17 @@
 const myLibrary = [];
 
-function Book(author, title, year, pages, read) {
-  this.author = author;
-  this.title = title;
-  this.year = year;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(author, title, year, pages, read) {
+    this.author = author;
+    this.title = title;
+    this.year = year;
+    this.pages = pages;
+    this.read = read;
+  }
+  toggleReadStatus = function () {
+    this.read = !this.read;
+  };
 }
-
-Book.prototype.toggleReadStatus = function () {
-  this.read = !this.read;
-};
 
 function addBookToLibrary(author, title, year, pages, read = false) {
   myLibrary.push(new Book(author, title, year, pages, read));
@@ -31,7 +32,7 @@ function displayBooks() {
     deleteButton.id = "delete-button"
 
     const readButton = document.createElement('button');
-    readButton.id="read-button"
+    readButton.id = "read-button"
     readButton.textContent = book.read ? 'Unread' : 'Read';
     readButton.onclick = () => {
       book.toggleReadStatus();
@@ -97,18 +98,32 @@ document.getElementById('add-book-form').addEventListener('submit', (e) => {
   document.getElementById('pageCount').value = '';
 });
 
+/**
+ * Event listener for the "add-book-toggle-button" click event.
+ * This function toggles the visibility of the "add-book-form" and "page-overlay" elements.
+ * When the form is displayed, the page is scrolled to the top and scrolling is disabled.
+ * When the form is hidden, scrolling is re-enabled.
+ */
 document.getElementById("add-book-toggle-button").addEventListener("click", function () {
+  // Get the "add-book-form" and "page-overlay" elements
   let content = document.getElementById("add-book-form")
   let overlay = document.getElementById("page-overlay")
+
+  // Check if the form is currently hidden
   if (content.style.display === "none") {
+    // Disable scrolling
     document.body.classList.add('no-scroll');
+    // Scroll to the top of the page
     window.scrollTo(0, 0);
+    // Display the overlay and the form
     overlay.style.display = "block"
     content.style.display = "grid"; // Make the div visible
+    // Set the grid properties for the form
     content.style.gridAutoRows = "fit-content(100px)";
     content.style.gridAutoColumns = "fit-content(100px)";
     content.style.alignItems = "center";
   } else {
+    // If the form is currently displayed, hide it and re-enable scrolling
     document.body.classList.remove('no-scroll');
     content.style.display = "none";
   }

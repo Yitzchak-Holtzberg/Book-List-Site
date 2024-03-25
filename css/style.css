@@ -131,7 +131,6 @@ button {
 }
 
 input[type=text] {
-
   color: rgba(0, 0, 0, .87);
   border-bottom-color: rgba(0, 0, 0, .42);
   font-size: 1rem;
@@ -188,6 +187,7 @@ div:first-child {
   }
   #read-button{
     max-width: initial;
+    bottom: 0;
   }
 
   #book-list div {
