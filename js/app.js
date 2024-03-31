@@ -1,20 +1,13 @@
-const myLibrary = [];
+import { Book } from './bookClass.js';
+import { addInputValidation } from './Validation.js';
 
 
 
-class Book {
-  constructor(author, title, year, pages, read) {
-    this.author = author;
-    this.title = title;
-    this.year = year;
-    this.pages = pages;
-    this.read = read;
-  }
+addInputValidation();
 
-  toggleReadStatus = function () {
-    this.read = !this.read;
-  };
-}
+// Load library from local storage or create an empty array
+const myLibrary = loadLibrary()|| [];
+
 
 if (myLibrary.length === 0) {
   console.log('Library is empty. Adding example books to library.');
@@ -99,12 +92,20 @@ document.getElementById('add-book-form').addEventListener('submit', (e) => {
   const year = document.getElementById('year').value;
   const pages = document.getElementById('pageCount').value;
 
+
+
   if (!author || !title || !year || !pages) {
     alert('All fields are required.');
     return;
   }
 
+  if (year.value < 0 || year.value > 9999 || pages.value < 1) {
+    alert('Please enter valid values for year and page count');
+    return;
+  }
+
   addBookToLibrary(author, title, year, pages);
+  saveLibrary();
   document.getElementById("add-book-form").style.display = "none";
   document.getElementById("page-overlay").style.display = "none";
   document.body.classList.remove('no-scroll'); // Re-enable scrolling
@@ -141,12 +142,16 @@ document.getElementById("add-book-toggle-button").addEventListener("click", func
     content.style.gridAutoRows = "fit-content(100px)";
     content.style.gridAutoColumns = "fit-content(100px)";
     content.style.alignItems = "center";
+
   } else {
     // If the form is currently displayed, hide it and re-enable scrolling
     document.body.classList.remove('no-scroll');
     content.style.display = "none";
   }
+
+
 })
+
 document.getElementById('close-form-button').addEventListener('click', function () {
   document.getElementById("add-book-form").style.display = "none";
   document.getElementById("page-overlay").style.display = "none";
@@ -162,7 +167,7 @@ function saveLibrary() {
 function loadLibrary() {
   const library = JSON.parse(localStorage.getItem('library'));
   if (library) {
-    myLibrary.push(...library);
+    return(library);
   } else {
     return null;
   }
