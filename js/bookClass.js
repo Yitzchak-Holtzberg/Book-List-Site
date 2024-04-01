@@ -1,4 +1,4 @@
-class Book {
+export class Book {
   constructor(author, title, year, pages, read) {
     this.author = author;
     this.title = title;
@@ -6,9 +6,7 @@ class Book {
     this.pages = pages;
     this.read = read;
   }
-  toggleReadStatus = function () {
+  toggleReadStatus() {
     this.read = !this.read;
-  };
+  }
 }
-export { Book };
-
